@@ -1,0 +1,1 @@
+# patrones-g6
