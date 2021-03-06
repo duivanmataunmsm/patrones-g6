@@ -44,15 +44,25 @@ public class Queen
         ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
         ArrayList<String> allMoves = new ArrayList<String>();
-        allMoves.addAll( northEastMoves );
-        allMoves.addAll( northWestMoves );
-        allMoves.addAll( southWestMoves );
-        allMoves.addAll( southEastMoves );
-        allMoves.addAll( northMoves );
-        allMoves.addAll( southMoves );
-        allMoves.addAll( westMoves );
-        allMoves.addAll( eastMoves );
+
+        addMoves(northEastMoves,northWestMoves,southEastMoves,southWestMoves,
+                northMoves,southMoves,eastMoves,westMoves,allMoves);
+
         return allMoves;
+    }
+    void addMoves( ArrayList<String> northEastMoves,ArrayList<String> northWestMoves,
+                            ArrayList<String> southEastMoves,ArrayList<String> southWestMoves,
+                            ArrayList<String> northMoves,ArrayList<String> southMoves,
+                            ArrayList<String> eastMoves,ArrayList<String> westMoves,
+                            ArrayList<String> moves){
+        moves.addAll( northEastMoves);
+        moves.addAll( northWestMoves );
+        moves.addAll( southEastMoves );
+        moves.addAll( southWestMoves );
+        moves.addAll( northMoves );
+        moves.addAll( southMoves );
+        moves.addAll( eastMoves );
+        moves.addAll( westMoves );
     }
     /**
      * Creates an icon for this piece depending on the piece's color.
