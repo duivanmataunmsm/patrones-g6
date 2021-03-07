@@ -46,27 +46,8 @@ public class Bishop extends ChessGamePiece{
         allMoves.addAll( southWestMoves );
         return allMoves;
     }
-    /**
-     * Creates an icon for this piece depending on the piece's color.
-     * 
-     * @return ImageIcon the ImageIcon representation of this piece.
-     */
     @Override
-    public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteBishop.gif")
-            );            
-        }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackBishop.gif")
-            );
-        }
-        else{
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackBishop.gif")
-            );
-        }
+    public String getPieceName() {
+        return "BISHOP";
     }
 }
