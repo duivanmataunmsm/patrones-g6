@@ -46,13 +46,8 @@ public class Rook
         allMoves.addAll( eastMoves );
         return allMoves;
     }
-    /**
-     * Creates an icon for this piece depending on the piece's color.
-     *
-     * @return ImageIcon the ImageIcon representation of this piece.
-     */
     @Override
-    public ImageIcon createImageByPieceType(){
-        return new RookCreateImage(this).createImage();
+    public String getPieceName() {
+        return "ROOK";
     }
 }

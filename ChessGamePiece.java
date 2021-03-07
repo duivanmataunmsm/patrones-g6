@@ -62,7 +62,7 @@ public abstract class ChessGamePiece{
         int pieceColor ){
         skipMoveGeneration = false;
         this.pieceColor = pieceColor;
-        pieceImage = createImageByPieceType();
+        pieceImage = (new PieceImage()).getImage(this);
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
@@ -95,7 +95,7 @@ public abstract class ChessGamePiece{
         boolean skipMoveGeneration ){
         this.skipMoveGeneration = skipMoveGeneration;
         this.pieceColor = pieceColor;
-        pieceImage = this.createImageByPieceType();
+        pieceImage = (new PieceImage()).getImage(this);
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
@@ -401,13 +401,6 @@ public abstract class ChessGamePiece{
         }
         return moves;
     }
-    /**
-     * Creates the ImageIcon by the color of the piece.
-     *
-     * @return ImageIcon the image that represents this game piece, different
-     *         for each piece.
-     */
-    public abstract ImageIcon createImageByPieceType();
     /**
      * Return the ImageIcon as an Image.
      *
@@ -735,4 +728,5 @@ public abstract class ChessGamePiece{
         return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
             + ", " + pieceColumn + ")";
     }
+    public abstract String getPieceName();
 }
