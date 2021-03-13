@@ -62,7 +62,9 @@ public abstract class ChessGamePiece{
         int pieceColor ){
         skipMoveGeneration = false;
         this.pieceColor = pieceColor;
-        pieceImage = (new PieceImage()).getImage(this);
+        ImageSingleton is = ImageSingleton.getInstance();
+        PieceImageHandler imageHandler = is.getPieceImage(this);// PieceImageNull || PieceImage
+        pieceImage = imageHandler.getImage();// getImage()
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
@@ -96,7 +98,9 @@ public abstract class ChessGamePiece{
         boolean skipMoveGeneration ){
         this.skipMoveGeneration = skipMoveGeneration;
         this.pieceColor = pieceColor;
-        pieceImage = (new PieceImage()).getImage(this);
+        ImageSingleton is = ImageSingleton.getInstance();
+        PieceImageHandler imageHandler = is.getPieceImage(this);// PieceImageNull || PieceImage
+        pieceImage = imageHandler.getImage();// getImage()
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
