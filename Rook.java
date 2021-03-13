@@ -35,10 +35,11 @@ public class Rook
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
-        ArrayList<String> westMoves = calculateWestMoves( board, 8 );
-        ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
+        MoveCalculation mc = new MoveCalculation(this);
+        ArrayList<String> northMoves = mc.calculateNorthMoves( board, 8 );
+        ArrayList<String> southMoves = mc.calculateSouthMoves( board, 8 );
+        ArrayList<String> westMoves = mc.calculateWestMoves( board, 8 );
+        ArrayList<String> eastMoves = mc.calculateEastMoves( board, 8 );
         ArrayList<String> allMoves = new ArrayList<String>();
         allMoves.addAll( northMoves );
         allMoves.addAll( southMoves );

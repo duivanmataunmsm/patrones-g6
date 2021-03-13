@@ -35,14 +35,15 @@ public class Queen
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );
-        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 8 );
-        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 8 );
-        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 8 );
-        ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
-        ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
-        ArrayList<String> westMoves = calculateWestMoves( board, 8 );
+        MoveCalculation mc = new MoveCalculation(this);
+        ArrayList<String> northEastMoves = mc.calculateNorthEastMoves( board, 8 );
+        ArrayList<String> northWestMoves = mc.calculateNorthWestMoves( board, 8 );
+        ArrayList<String> southEastMoves = mc.calculateSouthEastMoves( board, 8 );
+        ArrayList<String> southWestMoves = mc.calculateSouthWestMoves( board, 8 );
+        ArrayList<String> northMoves = mc.calculateNorthMoves( board, 8 );
+        ArrayList<String> southMoves = mc.calculateSouthMoves( board, 8 );
+        ArrayList<String> eastMoves = mc.calculateEastMoves( board, 8 );
+        ArrayList<String> westMoves = mc.calculateWestMoves( board, 8 );
         ArrayList<String> allMoves = new ArrayList<String>();
 
         addMoves(northEastMoves,northWestMoves,southEastMoves,southWestMoves,
