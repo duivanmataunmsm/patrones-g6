@@ -1,0 +1,69 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "name": "BISHOP_WHITE",
+      "path": "chessImages/WhiteBishop.gif"
+    },
+    {
+      "id": 2,
+      "name": "BISHOP_BLACK",
+      "path": "chessImages/BlackBishop.gif"
+    },
+    {
+      "id": 3,
+      "name": "KING_WHITE",
+      "path": "chessImages/WhiteKing.gif"
+    },
+    {
+      "id": 4,
+      "name": "KING_BLACK",
+      "path": "chessImages/BlackKing.gif"
+    },
+    {
+      "id": 5,
+      "name": "KNIGHT_WHITE",
+      "path": "chessImages/WhiteKnight.gif"
+    },
+    {
+      "id": 6,
+      "name": "KNIGHT_BLACK",
+      "path": "chessImages/BlackKnight.gif"
+    },
+    {
+      "id": 7,
+      "name": "PAWN_WHITE",
+      "path": "chessImages/WhitePawn.gif"
+    },
+    {
+      "id": 8,
+      "name": "PAWN_BLACK",
+      "path": "chessImages/BlackPawn.gif"
+    },
+    {
+      "id": 9,
+      "name": "QUEEN_BLACK",
+      "path": "chessImages/BlackQueen.gif"
+    },
+    {
+      "id": 10,
+      "name": "QUEEN_WHITE",
+      "path": "chessImages/WhiteQueen.gif"
+    },
+    {
+      "id": 11,
+      "name": "ROOK_WHITE",
+      "path": "chessImages/WhiteRook.gif"
+    },
+    {
+      "id": 12,
+      "name": "ROOK_BLACK",
+      "path": "chessImages/BlackRook.gif"
+    },
+    {
+      "id": 13,
+      "name": "DEFAULT",
+      "path": "chessImages/default-Unassigned.gif"
+    }
+  ]
+}
