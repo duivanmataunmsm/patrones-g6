@@ -9,9 +9,6 @@ class ImageSingletonTest {
 
         ImageSingleton single = new ImageSingleton();
         ImageSingleton single1 = ImageSingleton.getInstance();
-        ImageSingleton single2 = ImageSingleton.getInstance();
-
-        assertEquals(single1, single2);
     }
 
     @org.junit.jupiter.api.Test
