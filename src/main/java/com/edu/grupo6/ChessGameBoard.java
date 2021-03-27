@@ -177,87 +177,8 @@ public class ChessGameBoard extends JPanel {
         for (int i = 0; i < chessCells.length; i++) {
             for (int j = 0; j < chessCells[0].length; j++) {
                 ChessGamePiece pieceToAdd;
-                if (i == 1) // black pawns
-                {
-                    //pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
-                    pieceToAdd = new ChessGamePieceBuilder(this, PieceType.PAWN)
-                            .withRow(i)
-                            .withColumn(j)
-                            .withColor(ChessGamePiece.BLACK)
-                            .withImage()
-                            .withSkipMoveGeneration(true)
-                            .withPossibleMoves()
-                            .build();
-
-                } else if (i == 6) // white pawns
-                {
-                    //pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
-                    pieceToAdd = new ChessGamePieceBuilder(this, PieceType.PAWN)
-                            .withRow(i)
-                            .withColumn(j)
-                            .withColor(ChessGamePiece.WHITE)
-                            .withImage()
-                            .withSkipMoveGeneration(true)
-                            .withPossibleMoves()
-                            .build();
-                } else if (i == 0 || i == 7) // main rows
-                {
-                    int colNum =
-                            i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
-                    if (j == 0 || j == 7) {
-                        //pieceToAdd = new Rook( this, i, j, colNum );
-                        pieceToAdd = new ChessGamePieceBuilder(this, PieceType.ROOK)
-                                .withRow(i)
-                                .withColumn(j)
-                                .withColor(colNum)
-                                .withImage()
-                                .withSkipMoveGeneration(false)
-                                .withPossibleMoves()
-                                .build();
-                    } else if (j == 1 || j == 6) {
-                        //pieceToAdd = new Knight( this, i, j, colNum );
-                        pieceToAdd = new ChessGamePieceBuilder(this, PieceType.KNIGHT)
-                                .withRow(i)
-                                .withColumn(j)
-                                .withColor(colNum)
-                                .withImage()
-                                .withSkipMoveGeneration(false)
-                                .withPossibleMoves()
-                                .build();;
-                    } else if (j == 2 || j == 5) {
-                        //pieceToAdd = new Bishop( this, i, j, colNum );
-                        pieceToAdd = new ChessGamePieceBuilder(this, PieceType.BISHOP)
-                                .withRow(i)
-                                .withColumn(j)
-                                .withColor(colNum)
-                                .withImage()
-                                .withSkipMoveGeneration(false)
-                                .withPossibleMoves()
-                                .build();
-                    } else if (j == 3) {
-                        //pieceToAdd = new King( this, i, j, colNum );
-                        pieceToAdd = new ChessGamePieceBuilder(this, PieceType.KING)
-                                .withRow(i)
-                                .withColumn(j)
-                                .withColor(colNum)
-                                .withImage()
-                                .withSkipMoveGeneration(false)
-                                .withPossibleMoves()
-                                .build();
-                    } else {
-                        //pieceToAdd = new Queen( this, i, j, colNum );
-                        pieceToAdd = new ChessGamePieceBuilder(this, PieceType.QUEEN)
-                                .withRow(i)
-                                .withColumn(j)
-                                .withColor(colNum)
-                                .withImage()
-                                .withSkipMoveGeneration(false)
-                                .withPossibleMoves()
-                                .build();
-                    }
-                } else {
-                    pieceToAdd = null;
-                }
+                PieceFactory pf = new PieceFactory();
+                pieceToAdd = pf.getPiece(this, i, j);
                 chessCells[i][j] = new BoardSquare(i, j, pieceToAdd);
                 if ((i + j) % 2 == 0) {
                     chessCells[i][j].setBackground(Color.WHITE);
