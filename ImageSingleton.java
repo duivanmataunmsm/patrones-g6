@@ -37,7 +37,7 @@ public class ImageSingleton {
     private static void getPaths() {
 
         //@TODO: obtener de apirest
-        paths = new HashMap<>(){{
+        HashMap<String, String> data = new HashMap<String, String>(){{
             put("BISHOP_WHITE", "chessImages/WhiteBishop.gif");
             put("BISHOP_BLACK", "chessImages/BlackBishop.gif");
             put("KING_WHITE", "chessImages/WhiteKing.gif");
@@ -52,6 +52,9 @@ public class ImageSingleton {
             put("ROOK_BLACK", null);
             put("DEFAULT", "chessImages/default-Unassigned.gif");
         }};
+
+        paths = PathAdapter.adapter(data);
+        System.out.println(paths);
     }
 
     private synchronized static String getImagesFromApiRestService(String targetURL, String urlParameters) {
