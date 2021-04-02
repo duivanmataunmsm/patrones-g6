@@ -2,7 +2,7 @@ package com.edu.grupo6.interfaces;
 
 import com.edu.grupo6.ChessGameBoard;
 import com.edu.grupo6.ChessGamePiece;
-import com.edu.grupo6.builder.ChessGamePieceBuilder;
+import com.edu.grupo6.impl.ChessGamePieceBuilder;
 import com.edu.grupo6.enums.PieceType;
 
 public interface IChessGamePieceBuilder {

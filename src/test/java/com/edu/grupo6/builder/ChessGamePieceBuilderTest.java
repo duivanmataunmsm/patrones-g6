@@ -3,6 +3,7 @@ package com.edu.grupo6.builder;
 import com.edu.grupo6.ChessGameBoard;
 import com.edu.grupo6.ChessGamePiece;
 import com.edu.grupo6.enums.PieceType;
+import com.edu.grupo6.impl.ChessGamePieceBuilder;
 import com.edu.grupo6.models.King;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,6 @@
 package com.edu.grupo6;
 
+import com.edu.grupo6.models.BoardSquare;
 import com.edu.grupo6.models.King;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.edu.grupo6.builder;
+package com.edu.grupo6.impl;
 
 import com.edu.grupo6.*;
 import com.edu.grupo6.enums.PieceType;
