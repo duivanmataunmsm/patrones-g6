@@ -3,8 +3,12 @@ package com.edu.grupo6.models;
 import com.edu.grupo6.ChessGameBoard;
 import com.edu.grupo6.ChessGamePiece;
 import com.edu.grupo6.MoveCalculation;
+import com.edu.grupo6.interfaces.IMoveStrategy;
+import com.edu.grupo6.strategies.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 // -------------------------------------------------------------------------
 
 /**
@@ -15,8 +19,9 @@ import java.util.ArrayList;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class King
-        extends ChessGamePiece {
+public class King extends ChessGamePiece {
+
+    IMoveStrategy strategy;
     // ----------------------------------------------------------
     public King(ChessGameBoard board) {
         super(board);
@@ -45,15 +50,23 @@ public class King
         MoveCalculation mc = new MoveCalculation(this);
 
         ArrayList<String> allMoves = new ArrayList<String>();
+        MoveContext context = new MoveContext();
+        List<IMoveStrategy> strategies = Arrays.asList(
+                new NorthEastMovesStrategy(),
+                new NorthWestMovesStrategy(),
+                new SouthWestMovesStrategy(),
+                new SouthEastMovesStrategy(),
+                new NorthMovesStrategy(),
+                new SouthMovesStrategy(),
+                new EastMovesStrategy(),
+                new WestMovesStrategy()
+        );
 
-        allMoves.addAll(mc.calculateNorthEastMoves(board, 1));
-        allMoves.addAll(mc.calculateNorthWestMoves(board, 1));
-        allMoves.addAll(mc.calculateSouthWestMoves(board, 1));
-        allMoves.addAll(mc.calculateSouthEastMoves(board, 1));
-        allMoves.addAll(mc.calculateNorthMoves(board, 1));
-        allMoves.addAll(mc.calculateSouthMoves(board, 1));
-        allMoves.addAll(mc.calculateEastMoves(board, 1));
-        allMoves.addAll(mc.calculateEastMoves(board, 1));
+        for (IMoveStrategy strategy: strategies) {
+            context.setStrategy(strategy);
+            // MoveContext context = new MoveContext(strategy);
+            allMoves.addAll(context.calculate(board, this,1));
+        }
 
         return allMoves;
     }
