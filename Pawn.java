@@ -50,11 +50,19 @@ public class Pawn
             possibleMoves = calculatePossibleMoves( board );
             if ( ( getColorOfPiece() == ChessGamePiece.BLACK && row == 7 )
                 || ( getColorOfPiece() == ChessGamePiece.WHITE && row == 0 ) ){ // pawn has reached the end of the board, promote it to queen
-                board.getCell( row, col ).setPieceOnSquare( new Queen(
-                    board,
-                    row,
-                    col,
-                    getColorOfPiece() ) );
+
+                board.getCell( row, col ).setPieceOnSquare(PawnState.upgradePawn(
+                  board,
+                  row,
+                  col,
+                  getColorOfPiece()
+                ));
+
+                // board.getCell( row, col ).setPieceOnSquare( new Queen(
+                //     board,
+                //     row,
+                //     col,
+                //     getColorOfPiece() ) );
             }
             return true;
         }
