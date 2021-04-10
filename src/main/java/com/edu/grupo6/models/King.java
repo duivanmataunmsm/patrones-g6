@@ -47,8 +47,6 @@ public class King extends ChessGamePiece {
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
-        MoveCalculation mc = new MoveCalculation(this);
-
         ArrayList<String> allMoves = new ArrayList<String>();
         MoveContext context = new MoveContext();
         List<IMoveStrategy> strategies = Arrays.asList(
@@ -64,7 +62,6 @@ public class King extends ChessGamePiece {
 
         for (IMoveStrategy strategy: strategies) {
             context.setStrategy(strategy);
-            // MoveContext context = new MoveContext(strategy);
             allMoves.addAll(context.calculate(board, this,1));
         }
 
