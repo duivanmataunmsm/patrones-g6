@@ -1,5 +1,8 @@
 package com.edu.grupo6;
 
+import com.edu.grupo6.impl.GUIMediator;
+import com.edu.grupo6.interfaces.IGUIMediator;
+
 import java.awt.*;
 import javax.swing.*;
 // -------------------------------------------------------------------------
@@ -26,10 +29,12 @@ public class ChessPanel
      * Create a new ChessPanel object.
      */
     public ChessPanel() {
+        IGUIMediator mediator = new GUIMediator();
         this.setLayout(new BorderLayout());
         menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
         gameLog = new ChessGameLog();
+        mediator.registerComponent(menuBar);
         playerOneGraveyard = new ChessGraveyard("Player 1's graveyard");
         playerTwoGraveyard = new ChessGraveyard("Player 2's graveyard");
         this.add(menuBar, BorderLayout.NORTH);

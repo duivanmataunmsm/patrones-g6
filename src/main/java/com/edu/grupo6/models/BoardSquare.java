@@ -1,4 +1,6 @@
-package com.edu.grupo6;
+package com.edu.grupo6.models;
+
+import com.edu.grupo6.ChessGamePiece;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

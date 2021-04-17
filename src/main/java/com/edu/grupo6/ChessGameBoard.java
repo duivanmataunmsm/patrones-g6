@@ -1,7 +1,7 @@
 package com.edu.grupo6;
 
-import com.edu.grupo6.builder.ChessGamePieceBuilder;
-import com.edu.grupo6.enums.PieceType;
+import com.edu.grupo6.impl.PieceFactory;
+import com.edu.grupo6.models.BoardSquare;
 
 import java.util.ArrayList;
 import java.awt.event.MouseEvent;
@@ -172,8 +172,6 @@ public class ChessGameBoard extends JPanel {
      */
     public void initializeBoard() {
         resetBoard(false);
-        ChessGamePieceFactory factory = new ChessGamePieceFactory();
-        ChessGamePieceBuilder builder;
         for (int i = 0; i < chessCells.length; i++) {
             for (int j = 0; j < chessCells[0].length; j++) {
                 ChessGamePiece pieceToAdd;

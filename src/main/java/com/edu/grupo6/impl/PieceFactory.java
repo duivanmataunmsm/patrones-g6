@@ -1,6 +1,7 @@
-package com.edu.grupo6;
+package com.edu.grupo6.impl;
 
-import com.edu.grupo6.builder.ChessGamePieceBuilder;
+import com.edu.grupo6.ChessGameBoard;
+import com.edu.grupo6.ChessGamePiece;
 import com.edu.grupo6.enums.PieceType;
 import com.edu.grupo6.interfaces.IPieceFactory;
 
@@ -10,7 +11,6 @@ public class PieceFactory implements IPieceFactory {
         ChessGamePiece pieceToAdd;
         if (row == 1) // black pawns
         {
-            //pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
             pieceToAdd = new ChessGamePieceBuilder(board, PieceType.PAWN)
                     .withRow(row)
                     .withColumn(col)
