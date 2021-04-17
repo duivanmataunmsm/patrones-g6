@@ -21,6 +21,7 @@ import java.awt.event.MouseEvent;
  * @version 2010.11.17
  */
 public class ChessGameEngine {
+    private Logging logging;
     private ChessGamePiece currentPiece;
     private boolean firstClick;
     private int currentPlayer;
@@ -35,9 +36,10 @@ public class ChessGameEngine {
      *
      * @param board the reference ChessGameBoard
      */
-    public ChessGameEngine(ChessGameBoard board) {
+    public ChessGameEngine(ChessGameBoard board, Logging logging) {
         firstClick = true;
         currentPlayer = 1;
+        this.logging = logging;
         this.board = board;
         this.king1 = (King) board.getCell(7, 3).getPieceOnSquare();
         this.king2 = (King) board.getCell(0, 3).getPieceOnSquare();
@@ -285,7 +287,7 @@ public class ChessGameEngine {
                                 squareClicked.getRow(),
                                 squareClicked.getColumn());
                 if (moveSuccessful) {
-                    PieceMoveMapper mapper = new PieceMoveMapper();
+                    PieceMoveMapper mapper = new PieceMoveMapper(this.logging);
                     PieceMoveDTO dto = mapper.createDTO(currentPiece, previousRow, previousCol);
                     mapper.logMove(dto);
                     checkGameConditions();
