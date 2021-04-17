@@ -9,7 +9,7 @@ import java.util.logging.SimpleFormatter;
 
 public class Logging {
 
-    private Logger logger = null;
+    private static Logger logger;
 
     private Logger createLogger() {
         Logger log = Logger.getLogger("ChessLog");
