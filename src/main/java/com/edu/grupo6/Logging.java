@@ -27,7 +27,9 @@ public class Logging {
         return log;
     }
 
-    public Logging() {}
+    public Logging() {
+        this.logger = null;
+    }
 
     public Logger getLogger() {
         if(this.logger == null) {
