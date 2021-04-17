@@ -1,5 +1,7 @@
 package com.edu.grupo6;
 
+import com.edu.grupo6.DTO.PieceMoveDTO;
+import com.edu.grupo6.DTO.mappers.PieceMoveMapper;
 import com.edu.grupo6.models.BoardSquare;
 import com.edu.grupo6.models.King;
 
@@ -275,12 +277,17 @@ public class ChessGameEngine {
             if (pieceOnSquare == null ||
                     !pieceOnSquare.equals(currentPiece)) // moving
             {
+                int previousRow = currentPiece.getColumn();
+                int previousCol = currentPiece.getRow();
                 boolean moveSuccessful =
                         currentPiece.move(
                                 board,
                                 squareClicked.getRow(),
                                 squareClicked.getColumn());
                 if (moveSuccessful) {
+                    PieceMoveMapper mapper = new PieceMoveMapper();
+                    PieceMoveDTO dto = mapper.createDTO(currentPiece, previousRow, previousCol);
+                    mapper.logMove(dto);
                     checkGameConditions();
                 } else {
                     int row = squareClicked.getRow();
