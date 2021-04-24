@@ -288,7 +288,11 @@ public class ChessGameEngine {
                                 squareClicked.getColumn());
                 if (moveSuccessful) {
                     PieceMoveMapper mapper = new PieceMoveMapper(this.logging);
-                    PieceMoveDTO dto = mapper.createDTO(currentPiece, previousRow, previousCol);
+                    PieceMoveDTO dto = mapper.createDTO(
+                            currentPiece,
+                            previousRow,
+                            previousCol
+                    );
                     mapper.logMove(dto);
                     checkGameConditions();
                 } else {
