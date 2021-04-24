@@ -1,3 +1,5 @@
+package com.edu.grupo6.impl;
+
 import java.time.LocalDateTime;
 
 public class Mensaje {

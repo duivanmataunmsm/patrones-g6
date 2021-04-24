@@ -1,6 +1,6 @@
 
 package com.edu.grupo6.impl;
-//import com.edu.grupo6.Mensaje;
+//import com.edu.grupo6.com.edu.grupo6.impl.Mensaje;
 
 import java.util.ArrayList;
 import java.util.List;
