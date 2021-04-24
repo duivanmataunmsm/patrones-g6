@@ -4,6 +4,7 @@ import com.edu.grupo6.DTO.PieceMoveDTO;
 import com.edu.grupo6.DTO.mappers.PieceMoveMapper;
 import com.edu.grupo6.models.BoardSquare;
 import com.edu.grupo6.models.King;
+import com.edu.grupo6.impl.MsgPool;
 
 import java.util.ArrayList;
 import java.awt.Color;
@@ -29,6 +30,8 @@ public class ChessGameEngine {
     private King king1;
     private King king2;
     // ----------------------------------------------------------
+    MsgPool msgPool;
+
 
     /**
      * Create a new ChessGameEngine object. Accepts a fully-created
@@ -37,6 +40,11 @@ public class ChessGameEngine {
      * @param board the reference ChessGameBoard
      */
     public ChessGameEngine(ChessGameBoard board, Logging logging) {
+        //definiendo el pool de mensajes
+        msgPool = MsgPool.getInstance(5);
+        String mensaje = "A new chess "
+                        + "game has been started. Player 1 (white) will play "
+                        + "against Player 2 (black). BEGIN!";
         firstClick = true;
         currentPlayer = 1;
         this.logging = logging;
@@ -45,9 +53,7 @@ public class ChessGameEngine {
         this.king2 = (King) board.getCell(0, 3).getPieceOnSquare();
         ((ChessPanel) board.getParent()).getGameLog().clearLog();
         ((ChessPanel) board.getParent()).getGameLog().addToLog(
-                "A new chess "
-                        + "game has been started. Player 1 (white) will play "
-                        + "against Player 2 (black). BEGIN!");
+                msgPool.acquireReusable(mensaje).getContent());
     }
     // ----------------------------------------------------------
 
@@ -55,6 +61,9 @@ public class ChessGameEngine {
      * Resets the game to its original state.
      */
     public void reset() {
+        String mensaje = "A new chess "
+                        + "game has been started. Player 1 (white) will play "
+                        + "against Player 2 (black). BEGIN!";
         firstClick = true;
         currentPlayer = 1;
         ((ChessPanel) board.getParent()).getGraveyard(1).clearGraveyard();
@@ -65,9 +74,7 @@ public class ChessGameEngine {
         this.king2 = (King) board.getCell(0, 3).getPieceOnSquare();
         ((ChessPanel) board.getParent()).getGameLog().clearLog();
         ((ChessPanel) board.getParent()).getGameLog().addToLog(
-                "A new chess "
-                        + "game has been started. Player 1 (white) will play "
-                        + "against Player 2 (black). BEGIN!");
+                msgPool.acquireReusable(mensaje).getContent());
     }
 
     /**
@@ -75,8 +82,9 @@ public class ChessGameEngine {
      */
     private void nextTurn() {
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
+        String mensaje = "It is now Player " + currentPlayer + "'s turn.";
         ((ChessPanel) board.getParent()).getGameLog().addToLog(
-                "It is now Player " + currentPlayer + "'s turn.");
+                msgPool.acquireReusable(mensaje).getContent());
     }
     // ----------------------------------------------------------
 

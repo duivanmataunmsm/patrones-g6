@@ -1,6 +1,7 @@
 package com.edu.grupo6;
 
 import com.edu.grupo6.impl.PieceFactory;
+// import com.edu.grupo6.impl.MsgPool;
 import com.edu.grupo6.models.BoardSquare;
 
 import java.util.ArrayList;
@@ -127,6 +128,8 @@ public class ChessGameBoard extends JPanel {
         this.setLayout(new GridLayout(8, 8, 1, 1));
         listener = new BoardListener();
         chessCells = new BoardSquare[8][8];
+        //definiendo el pool de mensajes
+        // MsgPool msgPool = MsgPool.getInstance(5);
         initializeBoard();
     }
     // ----------------------------------------------------------
