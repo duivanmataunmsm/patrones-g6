@@ -43,7 +43,9 @@ public class ChessPanel
         this.add(playerOneGraveyard, BorderLayout.WEST);
         this.add(playerTwoGraveyard, BorderLayout.EAST);
         this.setPreferredSize(new Dimension(800, 600));
-        gameEngine = new ChessGameEngine(gameBoard); // start the game
+
+        Logging logging = new Logging();
+        gameEngine = new ChessGameEngine(gameBoard, logging); // start the game
     }
     // ----------------------------------------------------------
 

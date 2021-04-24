@@ -1,5 +1,7 @@
 package com.edu.grupo6;
 
+import com.edu.grupo6.DTO.PieceMoveDTO;
+import com.edu.grupo6.DTO.mappers.PieceMoveMapper;
 import com.edu.grupo6.models.BoardSquare;
 import com.edu.grupo6.models.King;
 import com.edu.grupo6.impl.MsgPool;
@@ -20,6 +22,7 @@ import java.awt.event.MouseEvent;
  * @version 2010.11.17
  */
 public class ChessGameEngine {
+    private Logging logging;
     private ChessGamePiece currentPiece;
     private boolean firstClick;
     private int currentPlayer;
@@ -36,16 +39,15 @@ public class ChessGameEngine {
      *
      * @param board the reference ChessGameBoard
      */
-    public ChessGameEngine(ChessGameBoard board) {
+    public ChessGameEngine(ChessGameBoard board, Logging logging) {
         //definiendo el pool de mensajes
         msgPool = MsgPool.getInstance(5);
-
         String mensaje = "A new chess "
                         + "game has been started. Player 1 (white) will play "
                         + "against Player 2 (black). BEGIN!";
-
         firstClick = true;
         currentPlayer = 1;
+        this.logging = logging;
         this.board = board;
         this.king1 = (King) board.getCell(7, 3).getPieceOnSquare();
         this.king2 = (King) board.getCell(0, 3).getPieceOnSquare();
@@ -285,12 +287,21 @@ public class ChessGameEngine {
             if (pieceOnSquare == null ||
                     !pieceOnSquare.equals(currentPiece)) // moving
             {
+                int previousRow = currentPiece.getColumn();
+                int previousCol = currentPiece.getRow();
                 boolean moveSuccessful =
                         currentPiece.move(
                                 board,
                                 squareClicked.getRow(),
                                 squareClicked.getColumn());
                 if (moveSuccessful) {
+                    PieceMoveMapper mapper = new PieceMoveMapper(this.logging);
+                    PieceMoveDTO dto = mapper.createDTO(
+                            currentPiece,
+                            previousRow,
+                            previousCol
+                    );
+                    mapper.logMove(dto);
                     checkGameConditions();
                 } else {
                     int row = squareClicked.getRow();
